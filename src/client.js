@@ -1,11 +1,17 @@
 import axios from "axios";
 
 export default class NotificationSystem {
-  constructor(projectID, apiOrigin) {
-    this.apiOrigin = apiOrigin
-      ? apiOrigin
+  constructor(projectID, devoptions) {
+    if (!projectID) {
+      throw new Error("projectID is required");
+    }
+
+    this.apiOrigin = devoptions.apiOrigin
+      ? devoptions.apiOrigin
       : "https://utification.appdevland.tech";
-    this.publicVAPIDKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
+    this.publicVAPIDKey = devoptions.publicVAPIDKey
+      ? devoptions.publicVAPIDKey
+      : "BGNtEcQWz8Dnt8DUWAkfSacCO1f2PE6TUOUzoNuw_2WF_TPi16G8urTAegQiI9YuUiYVa7-Anjh_weGb-OiDN4w";
     this.projectID = projectID;
   }
 
@@ -14,14 +20,14 @@ export default class NotificationSystem {
     try {
       sub = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: base64ToUint8Array(
-          process.env.NEXT_PUBLIC_PUBLIC_KEY
-        ),
+        applicationServerKey: base64ToUint8Array(this.publicVAPIDKey),
       });
     } catch (err) {
-      console.error(`error occured when creating subscription: ${err}`);
+      console.error(`Error occured when adding a subscription to the client`);
+      console.error(err);
       return;
     }
+
     let res = await this.localFetch("/api/subscribe", {
       method: "POST",
       headers: {
@@ -33,12 +39,12 @@ export default class NotificationSystem {
         filters: filters,
       }),
     });
-    console.log(res);
-    if (!res.ok) {
-      console.error("error occured when adding subscription");
+    if (res.status !== 200 && res.status !== 201) {
+      console.error("error occured when adding subscription to server");
+      console.error(res);
       return;
     }
-    console.log(await res.json());
+    console.log(res.data);
     console.log("web push subscribed!");
     return sub;
   }
@@ -56,12 +62,13 @@ export default class NotificationSystem {
       }),
     });
 
-    if (!res.ok) {
-      console.error(`error when updating subscription`);
+    if (res.status !== 200 && res.status !== 201) {
+      console.error(`Error when updating subscription on the server`);
+      console.error(res);
       return;
     }
 
-    console.log(await res.json());
+    console.log(res.data);
     console.log("subscription updated successfully");
     return sub;
   }
@@ -83,12 +90,15 @@ export default class NotificationSystem {
       },
     });
 
-    if (!res.ok) {
-      console.error("error occured while deleting subscription wump wump wump");
+    if (res.status !== 200 && res.status !== 201) {
+      console.error(
+        "error occured while deleting subscription on the server wump wump wump"
+      );
+      console.error(res);
       return;
     }
 
-    console.log(await res.json());
+    console.log(res.data);
     await sub.unsubscribe();
     console.log("web push unsubscribed!");
     return sub;

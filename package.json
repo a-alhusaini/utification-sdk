@@ -4,7 +4,8 @@
   "description": "The Utification SDK",
   "main": "dist/main.js",
   "scripts": {
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production",
+    "build:dev": "npx webpack --mode development"
   },
   "keywords": [
     "utification",

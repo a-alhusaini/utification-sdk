@@ -1,13 +1,20 @@
 import axios from "axios";
 
 export default class NotificationSystem {
-  constructor(apiKey, projectID, apiOrigin) {
-    this.apiOrigin = apiOrigin
-      ? apiOrigin
+  constructor(apiKey, projectID, devoptions) {
+    if (!apiKey) {
+      throw new Error("apiKey is required");
+    }
+
+    if (!projectID) {
+      throw new Error("projectID is required");
+    }
+
+    this.apiOrigin = devoptions.apiOrigin
+      ? devoptions.apiOrigin
       : "https://utification.appdevland.tech";
     this.apiKey = apiKey;
     this.projectID = projectID;
-    this.publicVAPIDKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
   }
 
   localFetch(location, body) {
@@ -27,6 +34,14 @@ export default class NotificationSystem {
         query,
       }),
     });
+
+    if (res.status !== 201 && res.status !== 200) {
+      console.error(
+        "Error occured when when querying the database.... wump wump wump"
+      );
+      console.error(res);
+    }
+
     return res;
   }
 
@@ -44,12 +59,14 @@ export default class NotificationSystem {
       }),
     });
 
-    if (!res.ok) {
-      console.error("error occured when sending notifications");
+    if (res.status !== 201 && res.status !== 200) {
+      console.error("error sending notification wump wump wump....");
+      console.error(res);
       return;
     }
 
+    console.log(res);
     console.log("notifications sent successfully");
-    return res.json();
+    return res;
   }
 }
