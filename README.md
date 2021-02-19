@@ -26,7 +26,7 @@ This is the SDK for the utification platform (of course!)
 
 # Server SDK Example Usage
 
-    import ServerSDK from "utification-sdk/server"
+    import { ServerSDK } from "utification-sdk"
 
     let serverSDK = new ServerSDK("your api key", "your project ID")
 
