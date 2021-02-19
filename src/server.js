@@ -1,4 +1,4 @@
-import "isomorphic-unfetch";
+import axios from "axios";
 
 export default class NotificationSystem {
   constructor(apiKey, projectID, apiOrigin) {
@@ -11,7 +11,8 @@ export default class NotificationSystem {
   }
 
   localFetch(location, body) {
-    return fetch(this.apiOrigin + location, body);
+    body.data = body.body;
+    return axios({ url: this.apiOrigin + location, ...body });
   }
 
   async query(query) {

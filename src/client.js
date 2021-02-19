@@ -1,4 +1,4 @@
-import "isomorphic-unfetch";
+import axios from "axios";
 
 export default class NotificationSystem {
   constructor(projectID, apiOrigin) {
@@ -33,6 +33,7 @@ export default class NotificationSystem {
         filters: filters,
       }),
     });
+    console.log(res);
     if (!res.ok) {
       console.error("error occured when adding subscription");
       return;
@@ -66,7 +67,8 @@ export default class NotificationSystem {
   }
 
   localFetch(location, body) {
-    return fetch(this.apiOrigin + location, body);
+    body.data = body.body;
+    return axios({ url: this.apiOrigin + location, ...body });
   }
 
   async unsubscribe(sub) {
