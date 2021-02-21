@@ -1,6 +1,13 @@
-import axios from "axios";
+import localFetch from "./utils/localFetch";
 
 export default class NotificationSystem {
+  /**
+   *
+   * @param {string} apiKey your utification API Key (visit your dashboard to see <it></it>)
+   * @param {string} projectID the ID of the project you want to connect to
+   * @param devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
+   * @param {string} devoptions.apiOrigin the origin of the API you are using
+   */
   constructor(apiKey, projectID, devoptions) {
     if (!apiKey) {
       throw new Error("apiKey is required");
@@ -17,13 +24,8 @@ export default class NotificationSystem {
     this.projectID = projectID;
   }
 
-  localFetch(location, body) {
-    body.data = body.body;
-    return axios({ url: this.apiOrigin + location, ...body });
-  }
-
   async query(query) {
-    let res = await this.localFetch("/api/query", {
+    let res = await localFetch("/api/query", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -46,7 +48,7 @@ export default class NotificationSystem {
   }
 
   async sendNotification(filters, notificationOptions) {
-    let res = await this.localFetch("/api/push", {
+    let res = await localFetch("/api/push", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

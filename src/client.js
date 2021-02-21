@@ -1,6 +1,13 @@
-import axios from "axios";
+import localFetch from "./utils/localFetch";
 
 export default class NotificationSystem {
+  /**
+   *
+   * @param {string} projectID the ID of the project you are using (check your utification dashboard for more info)
+   * @param devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
+   * @param {string} devoptions.apiOrigin the origin of the API you are using
+   * @param {string} devoptions.publicVAPIDKey the vapid key for the server
+   */
   constructor(projectID, devoptions) {
     if (!projectID) {
       throw new Error("projectID is required");
@@ -28,7 +35,7 @@ export default class NotificationSystem {
       return;
     }
 
-    let res = await this.localFetch("/api/subscribe", {
+    let res = await localFetch("/api/subscribe", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -50,7 +57,7 @@ export default class NotificationSystem {
   }
 
   async updateSubscription(sub, filters) {
-    let res = await this.localFetch("/api/subscribe", {
+    let res = await localFetch("/api/subscribe", {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -73,13 +80,8 @@ export default class NotificationSystem {
     return sub;
   }
 
-  localFetch(location, body) {
-    body.data = body.body;
-    return axios({ url: this.apiOrigin + location, ...body });
-  }
-
   async unsubscribe(sub) {
-    let res = await this.localFetch("/api/subscribe", {
+    let res = await localFetch("/api/subscribe", {
       method: "DELETE",
       body: JSON.stringify({
         subscription: sub,
