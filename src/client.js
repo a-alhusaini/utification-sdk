@@ -22,6 +22,11 @@ export default class NotificationSystem {
     this.projectID = projectID;
   }
 
+  /**
+   * subscribe a user and add him to the database
+   * @param {ServiceWorkerRegistration} registration the service worker registration you want to subscribe
+   * @param {object filters the data you want to add to this subscription
+   */
   async subscribe(registration, filters) {
     let sub;
     try {
@@ -56,6 +61,11 @@ export default class NotificationSystem {
     return sub;
   }
 
+  /**
+   * updates a subscription
+   * @param {ServiceWorkerRegistration} the subscription you want to update
+   * @param {object filters the data you want to change
+   */
   async updateSubscription(sub, filters) {
     let res = await localFetch("/api/subscribe", {
       method: "PUT",
@@ -80,6 +90,10 @@ export default class NotificationSystem {
     return sub;
   }
 
+  /**
+   * delete a subscription from the server
+   * @param {ServiceWorkerRegistration} sub the subscription you want to delete
+   */
   async unsubscribe(sub) {
     let res = await localFetch("/api/subscribe", {
       method: "DELETE",
