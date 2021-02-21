@@ -24,6 +24,10 @@ export default class NotificationSystem {
     this.projectID = projectID;
   }
 
+  /**
+   * query all the users in the database with a mongodb query
+   * @param {object} query the mongodb query you want to send to the database
+   */
   async query(query) {
     let res = await localFetch("/api/query", {
       method: "POST",
@@ -47,6 +51,11 @@ export default class NotificationSystem {
     return res;
   }
 
+  /**
+   *
+   * @param {object} filters a mongodb query that notifications will bem atched to
+   * @param {object} notificationOptions the notification payload that must be sent to the client
+   */
   async sendNotification(filters, notificationOptions) {
     let res = await localFetch("/api/push", {
       method: "POST",
