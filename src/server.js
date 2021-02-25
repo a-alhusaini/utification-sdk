@@ -5,7 +5,7 @@ export default class NotificationSystem {
    *
    * @param {string} apiKey your utification API Key (visit your dashboard to see <it></it>)
    * @param {string} projectID the ID of the project you want to connect to
-   * @param devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
+   * @param {object} devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
    * @param {string} devoptions.apiOrigin the origin of the API you are using
    */
   constructor(apiKey, projectID, devoptions) {

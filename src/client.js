@@ -4,7 +4,7 @@ export default class NotificationSystem {
   /**
    *
    * @param {string} projectID the ID of the project you are using (check your utification dashboard for more info)
-   * @param devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
+   * @param {object} devoptions options for SDK development DO NOT USE IF YOU ARE NOT DEVELOPING THE SDK
    * @param {string} devoptions.apiOrigin the origin of the API you are using
    * @param {string} devoptions.publicVAPIDKey the vapid key for the server
    */
@@ -25,7 +25,7 @@ export default class NotificationSystem {
   /**
    * subscribe a user and add him to the database
    * @param {ServiceWorkerRegistration} registration the service worker registration you want to subscribe
-   * @param {object filters the data you want to add to this subscription
+   * @param {object} filters the data you want to add to this subscription
    */
   async subscribe(registration, filters) {
     let sub;
@@ -63,8 +63,8 @@ export default class NotificationSystem {
 
   /**
    * updates a subscription
-   * @param {ServiceWorkerRegistration} the subscription you want to update
-   * @param {object filters the data you want to change
+   * @param {ServiceWorkerRegistration} sub subscription you want to update
+   * @param {object} filters the data you want to change
    */
   async updateSubscription(sub, filters) {
     let res = await localFetch("/api/subscribe", {
@@ -92,7 +92,7 @@ export default class NotificationSystem {
 
   /**
    * delete a subscription from the server
-   * @param {ServiceWorkerRegistration} sub the subscription you want to delete
+   * @param {PushSubscription} sub the subscription you want to delete
    */
   async unsubscribe(sub) {
     let res = await localFetch("/api/subscribe", {
