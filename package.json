@@ -1,6 +1,6 @@
 {
   "name": "utification-sdk",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "The Utification SDK",
   "main": "dist/main.js",
   "scripts": {
