@@ -27,8 +27,10 @@ export default class NotificationSystem {
   /**
    * query all the users in the database with a mongodb query
    * @param {object} query the mongodb query you want to send to the database
+   * @param {number} pageNumber the page of data you want to see
+   * @param {number} limit the amount of data per page
    */
-  async query(query) {
+  async query(query, pageNumber, limit) {
     let res = await localFetch("/api/query", {
       method: "POST",
       headers: {
@@ -37,6 +39,8 @@ export default class NotificationSystem {
       body: JSON.stringify({
         projectID: this.projectID,
         apiKey: this.apiKey,
+        pageNumber,
+        limit,
         query,
       }),
     });
