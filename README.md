@@ -1,5 +1,7 @@
 This is the SDK for the utification platform (of course!)
 
+NOTE: This project is very alpha bu i've stabilized it now.. it shouldn't break anymore but no promises!
+
 # Client SDK Example Usage
 
     import ClientSDK from "utification-sdk"
