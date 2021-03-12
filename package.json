@@ -4,9 +4,8 @@
   "description": "The Utification SDK",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
     "build:dev": "npx webpack --mode development",
-    "build:decleration": "rm -f index.d.ts && tsc -p tsconfig.json"
+    "build": "rm -f index.d.ts && tsc -p tsconfig.json"
   },
   "keywords": [
     "utification",
