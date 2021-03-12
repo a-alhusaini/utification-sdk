@@ -1,8 +1,8 @@
 {
   "name": "utification-sdk",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "The Utification SDK",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build:dev": "npx webpack --mode development",
     "prepare": "npm run build",
