@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build:dev": "npx webpack --mode development",
+    "prepare": "npm run build",
     "build": "rm -f index.d.ts && tsc -p tsconfig.json"
   },
   "keywords": [
