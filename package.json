@@ -2,9 +2,13 @@
   "name": "utification-sdk",
   "version": "0.0.20",
   "description": "The Utification SDK",
+  "directories": {
+    "src": "src",
+    "dist": "dist"
+  },
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [
