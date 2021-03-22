@@ -31,7 +31,7 @@ export default class NotificationSystem {
    * @param {number} limit the max amount of documents per page
    */
   async query(query, pageNumber, limit) {
-    let res = await localFetch("/api/query", {
+    let res = await localFetch(this.apiOrigin, "/api/query", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -62,7 +62,7 @@ export default class NotificationSystem {
    * @param {number} limit the maximum amount of documents per page
    */
   async aggregate(aggregate, pageNumber, limit) {
-    let res = await localFetch("/api/aggregate", {
+    let res = await localFetch(this.apiOrigin, "/api/aggregate", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -92,7 +92,7 @@ export default class NotificationSystem {
    * @param {object} notificationOptions the notification payload that must be sent to the client
    */
   async sendNotification(filters, notificationOptions) {
-    let res = await localFetch("/api/push", {
+    let res = await localFetch(this.apiOrigin, "/api/push", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

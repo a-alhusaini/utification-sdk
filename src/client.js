@@ -40,7 +40,7 @@ export default class NotificationSystem {
       return;
     }
 
-    let res = await localFetch("/api/subscribe", {
+    let res = await localFetch(this.apiOrigin, "/api/subscribe", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -67,7 +67,7 @@ export default class NotificationSystem {
    * @param {object} filters the data you want to change
    */
   async updateSubscription(sub, filters) {
-    let res = await localFetch("/api/subscribe", {
+    let res = await localFetch(this.apiOrigin, "/api/subscribe", {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -95,7 +95,7 @@ export default class NotificationSystem {
    * @param {PushSubscription} sub the subscription you want to delete
    */
   async unsubscribe(sub) {
-    let res = await localFetch("/api/subscribe", {
+    let res = await localFetch(this.apiOrigin, "/api/subscribe", {
       method: "DELETE",
       body: JSON.stringify({
         subscription: sub,
