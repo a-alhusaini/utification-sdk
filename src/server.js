@@ -17,9 +17,13 @@ export default class NotificationSystem {
       throw new Error("projectID is required");
     }
 
-    this.apiOrigin = devoptions.apiOrigin
-      ? devoptions.apiOrigin
-      : "https://utification.appdevland.tech";
+    if (devoptions) {
+      this.apiOrigin = devoptions.apiOrigin
+        ? devoptions.apiOrigin
+        : "https://utification.appdevland.tech";
+    } else {
+      this.apiOrigin = "https://utification.appdevland.tech";
+    }
     this.apiKey = apiKey;
     this.projectID = projectID;
   }

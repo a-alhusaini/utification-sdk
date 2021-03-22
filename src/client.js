@@ -13,12 +13,18 @@ export default class NotificationSystem {
       throw new Error("projectID is required");
     }
 
-    this.apiOrigin = devoptions.apiOrigin
-      ? devoptions.apiOrigin
-      : "https://utification.appdevland.tech";
-    this.publicVAPIDKey = devoptions.publicVAPIDKey
-      ? devoptions.publicVAPIDKey
-      : "BGNtEcQWz8Dnt8DUWAkfSacCO1f2PE6TUOUzoNuw_2WF_TPi16G8urTAegQiI9YuUiYVa7-Anjh_weGb-OiDN4w";
+    if (devoptions) {
+      this.apiOrigin = devoptions.apiOrigin
+        ? devoptions.apiOrigin
+        : "https://utification.appdevland.tech";
+      this.publicVAPIDKey = devoptions.publicVAPIDKey
+        ? devoptions.publicVAPIDKey
+        : "BGNtEcQWz8Dnt8DUWAkfSacCO1f2PE6TUOUzoNuw_2WF_TPi16G8urTAegQiI9YuUiYVa7-Anjh_weGb-OiDN4w";
+    } else {
+      this.apiOrigin = "https://utification.appdevland.tech";
+      this.publicVAPIDKey =
+        "BGNtEcQWz8Dnt8DUWAkfSacCO1f2PE6TUOUzoNuw_2WF_TPi16G8urTAegQiI9YuUiYVa7-Anjh_weGb-OiDN4w";
+    }
     this.projectID = projectID;
   }
 
