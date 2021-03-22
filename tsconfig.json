@@ -9,7 +9,7 @@
     "target": "ES2020",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "module": "UMD",
+    "module": "CommonJS",
     "outDir": "./dist",
     "declaration": true,
     "allowJs": true,
