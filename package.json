@@ -1,6 +1,6 @@
 {
   "name": "utification-sdk",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "The Utification SDK",
   "directories": {
     "src": "src",
@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "scripts": {
     "prepare": "yarn run build",
-    "build": "microbundle"
+    "build": "microbundle ./src/*.js"
   },
   "keywords": [
     "utification",
