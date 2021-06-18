@@ -4,7 +4,7 @@ NOTE: This project is very alpha bu i've stabilized it now.. it shouldn't break 
 
 # Client SDK Example Usage
 
-    import ClientSDK from "utification-sdk"
+    import ClientSDK from "utification-sdk/dist/client"
 
     let clientSDK = new ClientSDK("your project ID here (you can get it from the utification dashboard)")
 
@@ -28,7 +28,7 @@ NOTE: This project is very alpha bu i've stabilized it now.. it shouldn't break 
 
 # Server SDK Example Usage
 
-    import { ServerSDK } from "utification-sdk"
+    import ServerSDK from "utification-sdk/dist/server"
 
     let serverSDK = new ServerSDK("your api key", "your project ID")
 
