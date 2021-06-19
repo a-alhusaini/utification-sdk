@@ -1,6 +1,6 @@
 {
   "name": "utification-sdk",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "The Utification SDK",
   "directories": {
     "src": "src",
@@ -8,8 +8,9 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "yarn run build",
-    "build": "microbundle ./src/*.js"
+    "prepare": "yarn run build && yarn run build:web",
+    "build": "microbundle ./src/*.js",
+    "build:web": "microbundle --external none -f umd ./src/*.js"
   },
   "keywords": [
     "utification",
