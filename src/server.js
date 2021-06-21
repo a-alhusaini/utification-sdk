@@ -115,8 +115,6 @@ export default class NotificationSystem {
       return;
     }
 
-    console.log(res);
-    console.log("notifications sent successfully");
     return res;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "utification-sdk",
-  "version": "0.0.29",
+  "version": "0.0.31",
   "description": "The Utification SDK",
   "directories": {
     "src": "src",

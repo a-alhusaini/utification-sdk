@@ -62,8 +62,6 @@ export default class NotificationSystem {
       console.error(res);
       return;
     }
-    console.log(res.data);
-    console.log("web push subscribed!");
     return sub;
   }
 
@@ -91,8 +89,6 @@ export default class NotificationSystem {
       return;
     }
 
-    console.log(res.data);
-    console.log("subscription updated successfully");
     return sub;
   }
 
@@ -120,9 +116,7 @@ export default class NotificationSystem {
       return;
     }
 
-    console.log(res.data);
     await sub.unsubscribe();
-    console.log("web push unsubscribed!");
     return sub;
   }
 }
