@@ -8,5 +8,5 @@ import axios from "axios";
 export default function localFetch(apiOrigin, location, body) {
   body.mode = "cors";
   body.data = body.body;
-  return axios({ url: apiOrigin + location + "/", ...body });
+  return axios({ url: apiOrigin + location, ...body });
 }
