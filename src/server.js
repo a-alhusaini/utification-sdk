@@ -40,13 +40,13 @@ export default class NotificationSystem {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
+      body: {
         projectID: this.projectID,
         apiKey: this.apiKey,
         pageNumber,
         limit,
         query,
-      }),
+      },
     });
 
     if (res.status !== 201 && res.status !== 200) {
@@ -71,13 +71,13 @@ export default class NotificationSystem {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
+      body: {
         projectID: this.projectID,
         apiKey: this.apiKey,
         pageNumber,
         limit,
         aggregate,
-      }),
+      },
     });
 
     if (res.status !== 201 && res.status !== 200) {
@@ -101,12 +101,12 @@ export default class NotificationSystem {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
+      body: {
         projectID: this.projectID,
         apiKey: this.apiKey,
         filters,
         notificationOptions,
-      }),
+      },
     });
 
     if (res.status !== 201 && res.status !== 200) {

@@ -51,11 +51,11 @@ export default class NotificationSystem {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
+      body: {
         subscription: sub,
         projectID: this.projectID,
         filters: filters,
-      }),
+      },
     });
     if (res.status !== 200 && res.status !== 201) {
       console.error("error occured when adding subscription to server");
@@ -78,11 +78,11 @@ export default class NotificationSystem {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
+      body: {
         subscription: sub,
         projectID: this.projectID,
         filters: filters,
-      }),
+      },
     });
 
     if (res.status !== 200 && res.status !== 201) {
@@ -103,10 +103,10 @@ export default class NotificationSystem {
   async unsubscribe(sub) {
     let res = await localFetch(this.apiOrigin, "/api/subscribe", {
       method: "DELETE",
-      body: JSON.stringify({
+      body: {
         subscription: sub,
         projectID: this.projectID,
-      }),
+      },
       headers: {
         "Content-type": "application/json",
       },
