@@ -6,6 +6,7 @@ import axios from "axios";
  * @param body the fetch request body (includes headers/request body/method etc)
  */
 export default function localFetch(apiOrigin, location, body) {
+  body.mode = "cors";
   body.data = body.body;
   return axios({ url: apiOrigin + location, ...body });
 }
