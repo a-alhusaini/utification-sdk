@@ -1,6 +1,6 @@
 import localFetch from "./utils/localFetch";
 
-export default class NotificationSystem {
+export default class ClientSDK {
   /**
    *
    * @param {string} projectID the ID of the project you are using (check your utification dashboard for more info)

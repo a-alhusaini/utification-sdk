@@ -1,6 +1,6 @@
 import localFetch from "./utils/localFetch";
 
-export default class NotificationSystem {
+export default class ServerSDK {
   /**
    *
    * @param {string} apiKey your utification API Key (visit your dashboard to see <it></it>)
