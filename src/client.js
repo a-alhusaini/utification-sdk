@@ -67,7 +67,7 @@ export default class ClientSDK {
 
   /**
    * updates a subscription
-   * @param {ServiceWorkerRegistration} sub subscription you want to update
+   * @param {PushSubscription} sub subscription you want to update
    * @param {object} filters the data you want to change
    */
   async updateSubscription(sub, filters) {
