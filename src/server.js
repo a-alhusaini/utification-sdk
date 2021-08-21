@@ -60,37 +60,6 @@ export default class ServerSDK {
   }
 
   /**
-   * perform a mongodb aggregation on your data
-   * @param {array} aggregate array of objects with each object being a mongodb aggregation framework pipeline
-   * @param {number} pageNumber the page to return
-   * @param {number} limit the maximum amount of documents per page
-   */
-  async aggregate(aggregate, pageNumber, limit) {
-    let res = await localFetch(this.apiOrigin, "/api/aggregate", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: {
-        projectID: this.projectID,
-        apiKey: this.apiKey,
-        pageNumber,
-        limit,
-        aggregate,
-      },
-    });
-
-    if (res.status !== 201 && res.status !== 200) {
-      console.error(
-        "Error occured when when querying the database.... wump wump wump"
-      );
-      console.error(res);
-    }
-
-    return res;
-  }
-
-  /**
    * Sends notifications to users that match the provided filters
    * @param {object} filters a mongodb query that notifications will bem atched to
    * @param {object} notificationOptions the notification payload that must be sent to the client
